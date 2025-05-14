@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "id": "25555526-3cd0-40fb-80e4-d0250c9b273c",
+      "username": "user@example.com",
+      "password": "$2a$10$1xsmOjZfSFN52vljh35t0ev5PrEU8hODUCYdA4U2CYu/nFNN.DfUe",
+      "createdAt": "2025-05-14T10:40:11.329Z"
+    },
+    {
+      "id": "4988c241-fb76-4693-b2bc-d2f203fbed7d",
+      "username": "love123",
+      "password": "$2a$10$TDiGx/t15nIaIeXKzhXkpeKmrA2YQqQbWZy3alz8iffsc.9X2swFC",
+      "createdAt": "2025-05-14T11:14:36.438Z"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "05e725b6-3988-46f4-b5c4-dbdabd456cc0",
+      "userId": "25555526-3cd0-40fb-80e4-d0250c9b273c",
+      "title": "water",
+      "description": "drink daily",
+      "completed": true,
+      "createdAt": "2025-05-14T10:40:23.878Z",
+      "updatedAt": "2025-05-14T10:40:32.171Z"
+    },
+    {
+      "id": "de4ab6e3-cc5c-4712-bea7-3bfc918f4242",
+      "userId": "4988c241-fb76-4693-b2bc-d2f203fbed7d",
+      "title": "fjhdjn",
+      "description": "jsncxm",
+      "completed": true,
+      "createdAt": "2025-05-14T11:15:39.332Z",
+      "updatedAt": "2025-05-14T11:15:53.185Z"
+    }
+  ]
+}

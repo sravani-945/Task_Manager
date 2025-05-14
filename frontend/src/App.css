@@ -1,0 +1,29 @@
+.task-item {
+  transition: all 0.3s ease;
+}
+
+.task-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.task-buttons {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.2s linear;
+}
+
+.task-item:hover .task-buttons {
+  visibility: visible;
+  opacity: 1;
+}
+
+.task-complete-checkbox {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+}
+
+.edit-form input {
+  margin-right: 8px;
+}
