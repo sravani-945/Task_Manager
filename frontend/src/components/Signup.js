@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import config from '../config';
 
 const Signup = ({ setIsAuthenticated, setUser }) => {
   const [formData, setFormData] = useState({
@@ -30,7 +31,7 @@ const Signup = ({ setIsAuthenticated, setUser }) => {
     setIsLoading(true);
 
     try {
-      const response = await axios.post('/api/auth/signup', {
+      const response = await axios.post(`${config.apiUrl}/api/auth/signup`, {
         username: formData.username,
         password: formData.password
       });
@@ -44,6 +45,7 @@ const Signup = ({ setIsAuthenticated, setUser }) => {
       setUser(response.data.user);
       setIsAuthenticated(true);
     } catch (err) {
+      console.error('Signup error:', err);
       setError(err.response?.data?.message || 'Signup failed. Please try again.');
     } finally {
       setIsLoading(false);

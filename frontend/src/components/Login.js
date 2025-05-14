@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import config from '../config';
 
 const Login = ({ setIsAuthenticated, setUser }) => {
   const [formData, setFormData] = useState({
@@ -22,7 +23,7 @@ const Login = ({ setIsAuthenticated, setUser }) => {
     setIsLoading(true);
 
     try {
-      const response = await axios.post('/api/auth/login', formData);
+      const response = await axios.post(`${config.apiUrl}/api/auth/login`, formData);
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('user', JSON.stringify(response.data.user));
       
@@ -32,6 +33,7 @@ const Login = ({ setIsAuthenticated, setUser }) => {
       setUser(response.data.user);
       setIsAuthenticated(true);
     } catch (err) {
+      console.error('Login error:', err);
       setError(err.response?.data?.message || 'Login failed. Please try again.');
     } finally {
       setIsLoading(false);

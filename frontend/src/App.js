@@ -4,6 +4,7 @@ import TaskList from './components/TaskList';
 import Auth from './components/Auth';
 import './App.css';
 import axios from 'axios';
+import config from './config';
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -32,16 +33,16 @@ function App() {
   const fetchTasks = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('/api/tasks');
+      const response = await axios.get(`${config.apiUrl}/api/tasks`);
       setTasks(response.data);
       setError(null);
     } catch (err) {
+      console.error('Error fetching tasks:', err);
       if (err.response && err.response.status === 401) {
         // Token expired or invalid
         handleLogout();
       } else {
         setError('Error fetching tasks: ' + err.message);
-        console.error('Error fetching tasks:', err);
       }
     } finally {
       setLoading(false);
@@ -64,7 +65,7 @@ function App() {
 
   const addTask = async (task) => {
     try {
-      const response = await axios.post('/api/tasks', task);
+      const response = await axios.post(`${config.apiUrl}/api/tasks`, task);
       setTasks([...tasks, response.data]);
     } catch (err) {
       setError('Error adding task: ' + err.message);
@@ -74,7 +75,7 @@ function App() {
 
   const updateTask = async (id, updatedTask) => {
     try {
-      const response = await axios.put(`/api/tasks/${id}`, updatedTask);
+      const response = await axios.put(`${config.apiUrl}/api/tasks/${id}`, updatedTask);
       setTasks(tasks.map(task => task.id === id ? response.data : task));
     } catch (err) {
       setError('Error updating task: ' + err.message);
@@ -84,7 +85,7 @@ function App() {
 
   const toggleTask = async (id) => {
     try {
-      const response = await axios.patch(`/api/tasks/${id}/toggle`);
+      const response = await axios.patch(`${config.apiUrl}/api/tasks/${id}/toggle`);
       setTasks(tasks.map(task => task.id === id ? response.data : task));
     } catch (err) {
       setError('Error toggling task: ' + err.message);
@@ -94,7 +95,7 @@ function App() {
 
   const deleteTask = async (id) => {
     try {
-      await axios.delete(`/api/tasks/${id}`);
+      await axios.delete(`${config.apiUrl}/api/tasks/${id}`);
       setTasks(tasks.filter(task => task.id !== id));
     } catch (err) {
       setError('Error deleting task: ' + err.message);
