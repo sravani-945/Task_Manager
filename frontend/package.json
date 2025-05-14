@@ -2,7 +2,7 @@
   "name": "task-manager-frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://sravani-945.github.io/TaskManager",
+  "homepage": "https://sravani-945.github.io/Task_Manager",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
