@@ -19,16 +19,14 @@ const PORT = process.env.PORT || 8080;
 const JWT_SECRET = process.env.JWT_SECRET || 'taskmanager-secret-key';
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
-// CORS configuration
-const corsOptions = {
-  origin: NODE_ENV === 'production' 
-    ? ['https://sravani-945.github.io', 'https://task-manager-frontend.vercel.app'] 
-    : 'http://localhost:3000',
-  optionsSuccessStatus: 200
-};
+// CORS configuration - allow all origins for troubleshooting
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+}));
 
-// Middleware
-app.use(cors(corsOptions));
 app.use(express.json());
 
 // Authentication middleware
