@@ -16,10 +16,19 @@ db.defaults({ users: [], tasks: [] }).write();
 
 const app = express();
 const PORT = process.env.PORT || 8080;
-const JWT_SECRET = 'taskmanager-secret-key';
+const JWT_SECRET = process.env.JWT_SECRET || 'taskmanager-secret-key';
+const NODE_ENV = process.env.NODE_ENV || 'development';
+
+// CORS configuration
+const corsOptions = {
+  origin: NODE_ENV === 'production' 
+    ? ['https://sravani-945.github.io', 'https://task-manager-frontend.vercel.app'] 
+    : 'http://localhost:3000',
+  optionsSuccessStatus: 200
+};
 
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Authentication middleware
