@@ -6,7 +6,7 @@ const config = {
   },
   // Production API URL - replace with your actual deployed backend URL
   production: {
-    apiUrl: 'https://your-backend-service.com' // Replace with your actual deployed backend URL
+    apiUrl: 'https://task-manager-backend-cwru.onrender.com' // Your deployed Render.com backend
   }
 };
 
